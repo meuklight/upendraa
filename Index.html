@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upendra Rajendra Attarde</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        #container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        #info {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            color: #333;
+        }
+        .section {
+            margin: 20px 0;
+        }
+        .section h2 {
+            margin: 0 0 10px;
+        }
+        #contact {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="info">
+            <h1>Upendra Rajendra Attarde</h1>
+            <h2>Sr Software Engineer with more than 8 years experience in Augmented Reality</h2>
+            <div class="section" id="about">
+                <h2>About Me</h2>
+                <p>Experienced Software Engineer with a demonstrated history of working in the augmented reality industry. Skilled in various AR platforms, committed to creating immersive and innovative experiences.</p>
+            </div>
+            <div class="section" id="projects">
+                <h2>Augmented Reality Projects</h2>
+                <ul>
+                    <li>AR Navigation App</li>
+                    <li>Interactive AR Museum Guide</li>
+                    <li>AR Shopping Experience</li>
+                </ul>
+            </div>
+            <div class="section" id="contact">
+                <h2>Contact</h2>
+                <p>Email: upendra@example.com</p>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        const container = document.getElementById('container');
+
+        // Scene setup
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        container.appendChild(renderer.domElement);
+
+        // Cube setup
+        const geometry = new THREE.BoxGeometry();
+        const material = new THREE.MeshBasicMaterial({ color: 0x007bff });
+        const cube = new THREE.Mesh(geometry, material);
+        scene.add(cube);
+
+        camera.position.z = 5;
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+
+            cube.rotation.x += 0.01;
+            cube.rotation.y += 0.01;
+
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>
